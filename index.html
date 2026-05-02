@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GenAI – AI Training & Fine-tuning Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#0a0a0a;
+  --white:#f5f4ef;
+  --accent:#00e5a0;
+  --mid:#1a1a1a;
+  --card:#141414;
+  --muted:#888;
+}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;border-bottom:1px solid #222;}
+.logo{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-0.03em;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.9rem;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--accent);color:var(--black);padding:0.5rem 1.25rem;border-radius:2rem;font-size:0.85rem;font-weight:500;text-decoration:none;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+
+.hero{padding:6rem 4rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;min-height:88vh;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:#1a1a1a;border:1px solid #333;border-radius:2rem;padding:0.35rem 0.9rem;font-size:0.78rem;color:var(--muted);margin-bottom:1.5rem;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+h1{font-family:'Syne',sans-serif;font-size:4rem;font-weight:800;line-height:1.05;letter-spacing:-0.04em;margin-bottom:1.5rem;}
+h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{color:var(--muted);font-size:1.05rem;line-height:1.75;max-width:420px;margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:var(--black);padding:0.75rem 1.75rem;border-radius:2rem;font-weight:500;text-decoration:none;font-size:0.95rem;transition:transform .15s,opacity .15s;}
+.btn-primary:hover{transform:translateY(-1px);opacity:.9;}
+.btn-outline{border:1px solid #333;color:var(--white);padding:0.75rem 1.75rem;border-radius:2rem;font-weight:500;text-decoration:none;font-size:0.95rem;transition:border-color .2s;}
+.btn-outline:hover{border-color:#666;}
+
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+.orb{width:360px;height:360px;border-radius:50%;border:1px solid #222;position:relative;display:flex;align-items:center;justify-content:center;}
+.orb::before{content:'';position:absolute;inset:20px;border-radius:50%;border:1px dashed #2a2a2a;animation:spin 20s linear infinite;}
+.orb::after{content:'';position:absolute;inset:60px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,160,.12) 0%,transparent 70%);}
+@keyframes spin{to{transform:rotate(360deg);}}
+.orb-center{width:120px;height:120px;border-radius:50%;background:var(--mid);border:1px solid #333;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;z-index:1;}
+.orb-center span{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent);}
+.orb-center small{font-size:0.7rem;color:var(--muted);}
+.float-tag{position:absolute;background:var(--card);border:1px solid #2a2a2a;border-radius:0.5rem;padding:0.5rem 0.75rem;font-size:0.75rem;color:var(--white);}
+.float-tag:nth-child(2){top:30px;right:20px;}
+.float-tag:nth-child(3){bottom:50px;left:10px;}
+.float-tag:nth-child(4){top:50%;right:-10px;}
+
+.stats{padding:3rem 4rem;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+.stat{text-align:center;}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);}
+.stat-label{font-size:0.82rem;color:var(--muted);margin-top:4px;}
+
+.services{padding:5rem 4rem;}
+.section-tag{font-size:0.78rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;}
+h2{font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;}
+.section-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7;margin-bottom:3rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card);border:1px solid #222;border-radius:1rem;padding:1.75rem;transition:border-color .2s,transform .2s;}
+.service-card:hover{border-color:#444;transform:translateY(-3px);}
+.service-icon{width:42px;height:42px;border-radius:0.75rem;background:#1f1f1f;border:1px solid #2a2a2a;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.1rem;}
+.service-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:0.6rem;}
+.service-card p{font-size:0.875rem;color:var(--muted);line-height:1.65;}
+
+.how{padding:5rem 4rem;background:#0d0d0d;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;}
+.step{position:relative;}
+.step-num{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:#1e1e1e;line-height:1;}
+.step h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin:0.5rem 0 0.5rem;color:var(--white);}
+.step p{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+.step-line{position:absolute;top:1.8rem;left:3.5rem;right:-2rem;height:1px;background:#1e1e1e;}
+.steps .step:last-child .step-line{display:none;}
+
+.cta-section{padding:5rem 4rem;text-align:center;}
+.cta-box{background:linear-gradient(135deg,#0f1f19,#0a0a0a);border:1px solid #1f3d2e;border-radius:1.5rem;padding:4rem 3rem;max-width:700px;margin:0 auto;}
+.cta-box h2{font-size:2.2rem;margin-bottom:1rem;}
+.cta-box p{color:var(--muted);margin-bottom:2rem;line-height:1.7;}
+
+footer{padding:2rem 4rem;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;}
+footer .logo{font-size:1.1rem;}
+footer p{font-size:0.8rem;color:var(--muted);}
+
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem;min-height:auto;}
+  .hero-visual{display:none;}
+  h1{font-size:2.5rem;}
+  .stats{padding:2rem 1.5rem;grid-template-columns:repeat(2,1fr);}
+  .services{padding:3rem 1.5rem;}
+  .services-grid{grid-template-columns:1fr;}
+  .how{padding:3rem 1.5rem;}
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .step-line{display:none;}
+  .cta-section{padding:3rem 1.5rem;}
+  .cta-box{padding:2.5rem 1.5rem;}
+  footer{padding:1.5rem;flex-direction:column;gap:0.5rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Gen<span>AI</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get Started</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-badge"><span></span> AI Training & Fine-tuning Services</div>
+    <h1>Train smarter <em>AI</em> for your business</h1>
+    <p class="hero-sub">GenAI delivers expert data labeling, fine-tuning, and human feedback services to power the next generation of intelligent systems.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start a Project</a>
+      <a href="#services" class="btn-outline">See Our Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="orb">
+      <div class="orb-center">
+        <span>AI</span>
+        <small>Training</small>
+      </div>
+      <div class="float-tag">Data Labeling ✓</div>
+      <div class="float-tag">Fine-tuning ✓</div>
+      <div class="float-tag">RLHF ✓</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat">
+    <div class="stat-num">500K+</div>
+    <div class="stat-label">Data points labeled</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">50+</div>
+    <div class="stat-label">Models trained</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">Happy clients</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">99%</div>
+    <div class="stat-label">Accuracy rate</div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-tag">What we do</div>
+  <h2>End-to-end AI training<br>solutions</h2>
+  <p class="section-sub">From raw data to production-ready models, we handle every step of the AI training pipeline with precision and speed.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏷️</div>
+      <h3>Data Labeling & Annotation</h3>
+      <p>High-quality annotations for text, images, audio and video datasets — delivered fast and accurately by expert annotators.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h3>Model Fine-tuning</h3>
+      <p>Adapt leading foundation models to your domain and use case. We fine-tune LLMs on your proprietary data with measurable results.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>RLHF & Human Feedback</h3>
+      <p>Expert human raters evaluate and rank AI outputs to align your model with real-world expectations and safety standards.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧹</div>
+      <h3>Data Cleaning & Curation</h3>
+      <p>We process messy raw data into structured, clean training sets ready to feed directly into your ML pipelines.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Model Evaluation</h3>
+      <p>Benchmark your model's performance against industry standards. We identify gaps and recommend targeted improvements.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎓</div>
+      <h3>AI Training Consulting</h3>
+      <p>Strategic guidance for teams building AI systems — from data strategy to deployment pipelines and best practices.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-tag">Our process</div>
+  <h2>How it works</h2>
+  <p class="section-sub">A streamlined 4-step process to get your AI project from idea to production.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-line"></div>
+      <h4>Discovery call</h4>
+      <p>We understand your data, model goals, and timeline requirements.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-line"></div>
+      <h4>Custom proposal</h4>
+      <p>We build a tailored training plan with scope, cost, and delivery dates.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-line"></div>
+      <h4>Execution</h4>
+      <p>Our expert team labels, trains, and evaluates — with full transparency.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Delivery & support</h4>
+      <p>You receive your production-ready model with ongoing support.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <div class="section-tag" style="margin-bottom:.75rem;">Ready to build?</div>
+    <h2>Let's train your AI together</h2>
+    <p>Tell us about your project and get a free consultation. We work with startups and enterprises across the globe.</p>
+    <a href="mailto:hello@genai.com" class="btn-primary">Book a Free Call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Gen<span>AI</span></div>
+  <p>© 2026 GenAI. All rights reserved.</p>
+  <p>Kerala, India</p>
+</footer>
+
+</body>
+</html>
